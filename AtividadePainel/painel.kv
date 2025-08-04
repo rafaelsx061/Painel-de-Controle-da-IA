@@ -1,0 +1,42 @@
+<PainelControle>:
+    orientation: 'vertical'
+    padding: 20
+    spacing: 15
+
+    Label:
+        text: "Painel de Controle da IA"
+        font_size: 28
+        size_hint_y: None
+        height: 50
+
+    Label:
+        text: root.status
+        font_size: 20
+        size_hint_y: None
+        height: 40
+        color: (0, 1, 0, 1) if root.ia_ativa else (1, 0, 0, 1)  # CORRETO
+
+    ProgressBar:
+        max: 100
+        value: root.nivel_ameaca
+        height: 30
+        size_hint_y: None
+
+    ToggleButton:
+        text: "Desligar IA" if root.ia_ativa else "Ligar IA"
+        on_press: root.alternar_ia()
+        size_hint_y: None
+        height: 50
+
+    TextInput:
+        id: campo_comando
+        hint_text: "Digite um comando para a IA"
+        multiline: False
+        size_hint_y: None
+        height: 40
+
+    Button:
+        text: "Enviar Comando"
+        on_press: root.enviar_comando()
+        size_hint_y: None
+        height: 50
